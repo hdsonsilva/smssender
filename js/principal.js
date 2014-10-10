@@ -1,11 +1,9 @@
 $(document).ready(function(){
         //Iniciando Lungo apos carregar a pagina toda 
          Lungo.init({});
-         //Buscando Saldo SMS
-         atualizaSaldoSMS();
          //Setando evento que busca o saldo de SMS toda vez que a pagina inicial ´e carregada
         Lungo.dom('#main-article').on('load', function(event){
-            atualizaSaldoSMS();   
+            //atualizaSaldoSMS();   
         });
                 //Carregando os dados do cliente
         $('#codigocliente').val(getCookie('codigocliente'));
@@ -25,11 +23,10 @@ $(document).ready(function(){
                 setCookie('usuario',$('#usuario').val());
                 setCookie('senha',$('#senha').val());
                 setCookie('assinat',$('#assinat').val());
+                atualizaSaldoSMS();
                 alert('Dados configurados com sucesso.');
 
                 Lungo.Router.article("principalsection", "main-article");
-                Lungo.Router.article("principalsection", "idsmsenviado");
-
         });
 
         //Evento para enviar mensagens
@@ -44,7 +41,7 @@ $(document).ready(function(){
             }
             //Habilita a mensagem carregando
             Lungo.Router.article("principalsection", "carregando");
-            Lungo.Element.loading("#carregando",2);
+            Lungo.Element.loading("#carregando",1);
             //Solicita o envio da mensagem
             $.ajax({
                 url: 'http://www.softwareshd.com.br/system/sms/sms.sender.php',
@@ -57,13 +54,19 @@ $(document).ready(function(){
                     telefone: $('#telefone').val(),
                     mensagem: $('#msg').val() + '\r\n' + 'De: ' + getCookie('assinat')
                 }   
-            }).success(function(){
+            }).success(function(a){
                 //Desabilitando a mensagem carregando
                 
                 //Exibindo mensagem de envio realizado com sucesso
-                alert('Sua mensagem foi enviada com sucesso!');
-                $('#telefone').val('');
-                $('#msg').val('');
+                if(a.substring(0,2) == 'ID'){
+                    alert('Sua mensagem foi enviada com sucesso!');
+                    $('#telefone').val('');
+                    $('#msg').val('');
+                }
+                else{
+                    alert('Ocorreu um erro ao enviar sua mensagem!\nTente novamente.');
+                }
+                
                 Lungo.Router.article("principalsection", "enviarsms");
             });
              

@@ -13,7 +13,7 @@ function setCookie(name,value){    //função universal para criar cookie
 function atualizaSaldoSMS(){
     //Habilita a mensagem carregando
     Lungo.Router.article("principalsection", "carregando");
-    Lungo.Element.loading("#carregando",2);
+    Lungo.Element.loading("#carregando",1);
     //Solicita Saldo
     $.ajax({
             url: 'http://www.softwareshd.com.br/system/sms/sms.sender.php',
