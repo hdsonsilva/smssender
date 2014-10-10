@@ -28,6 +28,17 @@ function atualizaSaldoSMS(){
             //Atualizando saldo de sms
             $('#divexibesaldo').html('Saldo Torpedos: '+e);
             Lungo.Router.article("principalsection", "main-article");
+
+            var pull_example = new Lungo.Element.Pull('#main-article', {
+                onPull: "Pull down to refresh",      //Text on pulling
+                onRelease: "Release to get new data",//Text on releasing
+                onRefresh: "Refreshing...",          //Text on refreshing
+                callback: function() {               //Action on refresh
+                    alert("Pull & Refresh completed!");
+                    pull_example.hide();
+                }
+            });
             
         });
+
 }

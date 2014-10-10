@@ -3,7 +3,7 @@ $(document).ready(function(){
          Lungo.init({});
          //Setando evento que busca o saldo de SMS toda vez que a pagina inicial ´e carregada
         Lungo.dom('#main-article').on('load', function(event){
-            //atualizaSaldoSMS();   
+            //atualizaSaldoSMS(); 
         });
                 //Carregando os dados do cliente
         $('#codigocliente').val(getCookie('codigocliente'));
