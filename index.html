@@ -1,0 +1,113 @@
+<meta http-equiv="content-type" content="text/html; charset=utf-8">  
+    <link rel="stylesheet" href="./package-lungo-2.2.1/lungo.css">
+    <link rel="stylesheet" href="./package-lungo-2.2.1/lungo.icon.css">
+    <link rel="stylesheet" href="./package-lungo-2.2.1/lungo.theme.css">
+    <script src="./package-quojs-2.3.6/quo.debug.js"></script>
+    <script src="./package-lungo-2.2.1/lungo.js"></script>
+    <script type="text/javascript" charset="utf-8" src="jquery/jquery-ui-1.8.21.custom/js/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/funcoes.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/principal.js"></script>
+    <script src="phonegap.js"></script>
+
+<section id="principalsection" data-transition="slide" data-aside="features" class="drag show">
+        <header>
+            <nav>
+                <a href="#demo" data-view-aside="features" data-icon="menu"></a>
+            </nav>
+            SMS SENDER<img src="sms.png" class="title centered">
+            <nav class="on-right">
+                <a href="#demo"><abbr class="text tiny ">v1.0</abbr></a>
+            </nav>
+        </header>
+        <article id="configdados" class="list indenteds scroll">
+            <div class="form">
+                <fieldset>
+                <ul>
+                <li class="text small">
+                 
+                    <label>Codigo:</label>
+                    <input name='codigocliente' id='codigocliente' type="number" placeholder="99999" class="text align_right" maxlength="5">
+                </li>
+                <li class="text small">
+                    <label>Usuario:</label>
+                    <input name='usuario' id='usuario' type="text" placeholder="Usuario" class="text align_right" >
+                </li>
+                <li class="text small">
+                    <label>Senha:</label>
+                    <input name='senha' id='senha' type="password" placeholder="Senha" class="text align_right" >
+                </li>
+                <li class="text small">
+                    <label>Assinatura:</label>
+                    <input name='assinat' id='assinat' type="text" placeholder="Assinatura" class="text align_right" >
+                </li>
+                <li class="text small">
+                    <button name="salvardados" value="Salvar Dados" id="salvardados" class="anchor" data-label="Salvar Dados"></button>
+                </li>
+                <ul>
+                </fieldset>
+
+        </article>
+        <article id="enviarsms" class="list indenteds scroll">
+            <div class="form">
+                <fieldset>
+                <ul>
+                <li class="text small">
+                 
+                    <label>Telefone:</label>
+                    <input name='telefone' id='telefone' type="number" placeholder="Telefone xxXXXXXXXX" class="text align_right" maxlength='11'>
+                </li>
+                <li class="text small">
+                    <label>Mensagem:</label>
+                    <textarea name="msg" id="msg"></textarea>
+                </li>
+                <li class="text small">
+                    <button name="enviar" value="Enviar" id="enviar" class="anchor" data-label="Enviar SMS"></button>
+                </li>
+                <ul>
+                </fieldset>
+</div>
+        </article>
+        <article id="main-article" class="list indented scroll active">
+            <ul id='iniciomensagens'>
+                <li>
+                    Bem vindo ao seu disparador de SMS. Envie seus torpedos para qualquer operadora de maneira rapida e simples.
+                </li>
+                <li>
+                    <a href='#'>
+                        <div id='divexibesaldo'>Saldo Torpedos: </div>
+                    </a>
+                </li>
+            </ul>
+        </article>
+        <article id="carregando" class="list indented scroll active">
+            <ul id='iniciomensagens'>
+                <li>
+                    Carregando...
+                </li>
+            </ul>
+        </article>
+</section>
+<aside id="features" data-transition="left" class="show box">
+    <header data-title=""><h1 class="title centered">Opções</h1>
+        <!--<nav class="on-right">
+            <a href="#demo" class="buttons" data-icon="settings"><span class="icon settings"></span></a>
+        </nav>-->
+    </header>
+
+    <article class="list scroll active">
+        <ul>
+            <li data-view-article="main-article" data-icon="home">
+                <strong>Inicio</strong>
+            </li>
+
+            <li data-view-article="configdados" data-icon="user">
+                <div id='verificadados' class="tag on-right">ok</div>
+                <strong>Meus Dados</strong>
+            </li>
+
+            <li data-view-article="enviarsms"  data-icon="list"><!--<span class="icon list"></span>-->
+                <strong>Enviar SMS</strong>
+            </li>
+        </ul>
+    </article>
+</aside>

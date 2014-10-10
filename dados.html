@@ -1,0 +1,126 @@
+<meta http-equiv="content-type" content="text/html; charset=utf-8">  
+    <link rel="stylesheet" href="style.css" type="text/css">  
+    <link rel="stylesheet" href="jquery/jquery-ui-1.8.21.custom/css/overcast/jquery-ui-1.8.22.custom.css" type="text/css">  
+    <script type="text/javascript" charset="utf-8" src="jquery/jquery-ui-1.8.21.custom/js/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="jquery/jquery-ui-1.8.21.custom/js/jquery-ui-1.8.21.custom.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="jquery/mask.js"></script>
+
+    <b><script type="text/javascript" charset="utf-8" src="cordova-2.0.0.js"></script></b>
+<script type="text/javascript">  
+    function alerta(msg){
+      $('#dialogo1').html(msg);
+      $('#dialogo1').dialog({
+              buttons:{'OK':function(){$(this).dialog('close');}},
+              modal: true
+            });
+    }
+    $(document).ready(function(){
+        
+        $('#codigo').val(getCookie('codigo') == false ? '' : getCookie('codigo'));
+        $('#senha').val(getCookie('senha') == false ? '' : getCookie('senha'));
+        $('#usuario').val(getCookie('usuario') == false ? '' : getCookie('usuario'));
+        $('#ass').val(getCookie('ass') == false ? '' : getCookie('ass'));
+        $('#enviar').click(function(){
+          if($('#codigo').val() == '' || $('#codigo').val().length != 5){
+            alerta('Coloque o código de cliente. \nEle deve conter obrigatoriamente 5 dígitos.');
+            
+            return false;
+          }
+          if($('#usuario').val() == ''){
+            alerta('Coloque o seu nome de usuário.');
+            return false;
+          }
+          if($('#senha').val() == ''){
+            alerta('Coloque a senha.');
+            return false;
+          }
+          if($('#ass').val() == ''){
+            alerta('Coloque uma assinatura para as mensagens.');
+            return false;
+          }
+            setCookie('codigo',$('#codigo').val());
+            setCookie('usuario',$('#usuario').val());
+            setCookie('senha',$('#senha').val());
+            setCookie('ass',$('#ass').val());
+            window.location.href = 'index.html';
+            
+        });
+    });
+     function getCookie(cookieSeuNome){
+        var tmp = localStorage.getItem(cookieSeuNome);
+        if(tmp == null)
+          return false ;
+        else
+          return localStorage.getItem(cookieSeuNome);
+    }
+    function setCookie(name,value){    //função universal para criar cookie
+
+        localStorage.setItem(name, value);  
+    }  
+</script> 
+<div style='display:none' id='dialogo1' title='Atenção'></div>
+<form class="form" name='form'>  
+<table width='100%'>  
+ <tbody>
+  <tr>  
+   <td class='titulo' align='left'>  
+     <font id='titulo'><img src='sms.png' width='30' height='30'> SMS Sender</font>
+   </td>  
+ </tr>
+ <tr>
+  <td>
+    <br><br>  
+  </td>
+</tr>
+  <tr>  
+   <td align='center'>  
+     <label for="Gas_Cons">Código:</label>  
+   </td>  
+ </tr>
+ <tr>
+   <td align='center'>  
+     <input name="codigo" id="codigo" type="number" maxlength='5'>  
+     <br><br>
+   </td>  
+ </tr>  
+ <tr>  
+   <td align='center'>  
+     <label for="Eta_Price">Usuário:</label>  
+   </td> 
+  </tr>
+  <tr> 
+   <td align='center'>  
+     <input name="usuario" id="usuario" type="text">  
+     <br><br>
+   </td>  
+ </tr>
+ <tr>  
+   <td align='center'>  
+     <label for="Eta_Price">Senha:</label>  
+   </td> 
+  </tr>
+  <tr> 
+   <td align='center'>  
+     <input name="senha" id="senha" type="password">  
+     <br><br>
+   </td>  
+ </tr>    
+ <tr>  
+   <td align='center'>  
+     <label for="Eta_Price">Assinatura das Mensagens:</label>  
+   </td> 
+  </tr>
+  <tr> 
+   <td align='center'>  
+     <input name="ass" id="ass" type="text">  
+     <br><br>
+   </td>  
+ </tr>    
+ <tr> 
+   <td align='center'>  
+    <br><br>
+    <button type="button" id='enviar'>Configurar</button>  
+    </td>  
+ </tr>  
+</tbody></table>  
+</form> 

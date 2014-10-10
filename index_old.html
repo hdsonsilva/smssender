@@ -1,0 +1,131 @@
+<meta http-equiv="content-type" content="text/html; charset=utf-8">  
+    <link rel="stylesheet" href="style.css" type="text/css">  
+    <link rel="stylesheet" href="jquery/jquery-ui-1.8.21.custom/css/overcast/jquery-ui-1.8.22.custom.css" type="text/css">  
+    <script type="text/javascript" charset="utf-8" src="jquery/jquery-ui-1.8.21.custom/js/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="jquery/jquery-ui-1.8.21.custom/js/jquery-ui-1.8.21.custom.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="jquery/mask.js"></script>
+    <b><script type="text/javascript" charset="utf-8" src="cordova.js"></script></b>
+<script type="text/javascript">  
+    function getCookie(cookieSeuNome){
+      var tmp = localStorage.getItem(cookieSeuNome);
+      if(tmp == null)
+        return false ;
+      else
+        return localStorage.getItem(cookieSeuNome);
+  }
+
+    $(document).ready(function(){
+        if(getCookie('usuario'));
+        else{
+          window.location.href = 'dados.html';
+        }
+    });
+      
+    function sender(){  
+      
+
+      if($('#telefone').val() == '' || $('#telefone').val().length != 10){
+        alert('Coloque um telefone.\nO número deve conter 10 digitos');
+        return false ;
+      }
+      if($('#msg').val() == ''){
+        alert('Coloque uma mensagem.');
+        return false ;
+      }
+      $('#enviar').prop('disabled',true);
+      $.ajax({
+			   url: 'http://www.softwareshd.com.br/system/sms/sms.sender.php',
+         cache: false,
+    	   data:{
+    				usercod:getCookie('codigo'),
+    		  	login: getCookie('usuario'),
+    				password:getCookie('senha'),
+    				service:'enviar',
+    				telefone: $('#telefone').val(),
+    				mensagem: $('#msg').val() + '\r\n' + 'De: ' + getCookie('ass')
+    			},
+        success:function(data,status,xhr){
+          if(data.substring(0,2) == 'ID'){
+
+            $('#dialogo1').dialog({
+              buttons:{'OK':function(){$(this).dialog('close');}},
+              modal: true
+            });
+            $('#enviar').prop('disabled',false);
+            $('#telefone').val('');
+            $('#msg').val('');
+          }
+          else{
+           $('#dialogo2').dialog({
+              buttons:{'OK':function(){$(this).dialog('close');}},
+              modal: true
+            });
+            $('#enviar').prop('disabled',false);
+            $('#telefone').val('');
+            $('#msg').val(''); 
+          }
+         },
+         error:function(data,status,xhr){
+          $('#dialogo2').dialog({
+            buttons:{'OK':function(){$(this).dialog('close');}},
+            modal: true 
+          });
+          
+          $('#enviar').prop('disabled',false);
+          
+         }
+    });
+    }  
+</script> 
+<div style='display:none' id='dialogo1' title='Mensagem Enviada'>Sua mensagem foi enviada com sucesso.</div>
+<div style='display:none' id='dialogo2' title='ERRO'>Ocorreu um erro ao enviar sua mensagem.<br>Você tem acesso à rede?<br>Você tem créditos no seu serviço?</div>
+<form class="form" name='form'>  
+
+<table width='100%'>  
+ <tbody>
+  <tr>  
+   <td class='titulo' align='left'>  
+     <font id='titulo'><img src='sms.png' width='30' height='30'> SMS Sender</font>
+   </td>  
+ </tr>
+ <tr>
+  <td>
+    <br><br>  
+  </td>
+</tr>
+  <tr>  
+   <td align='center'>  
+     <label for="Gas_Cons">Telefone:</label>  
+   </td>  
+ </tr>
+ <tr>
+   <td align='center'>  
+     <input name="telefone" id="telefone" type="number" maxlength='10'>  
+     <br><br>
+   </td>  
+ </tr>  
+ <tr>  
+   <td align='center'>  
+     <label for="Eta_Price">Mensagem:</label>  
+   </td> 
+  </tr>
+  <tr> 
+   <td align='center'>  
+     <textarea name='msg' id='msg'></textarea>
+     <br><br>
+   </td>  
+ </tr>  
+ <tr> 
+   <td align='center'>  
+    <button onclick="sender();" type="button" id='enviar'>Enviar</button>  
+    </td>  
+ </tr>  
+ <tr> 
+  <td>
+  <br><br>
+   <a href='dados.html'><img src='config.png' width='30' height='30'></a>
+    
+    </td>  
+ </tr>  
+</tbody></table>  
+</form> 

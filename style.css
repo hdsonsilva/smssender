@@ -1,0 +1,78 @@
+
+body {  
+        background: #e7e7e7;  
+        font-size: 1em;  
+        margin-top: -2px;  
+        margin-left: -2px;
+        margin-right: -2px;
+        font-family: Verdana;  
+    }  
+
+      
+    h1 {  
+        font-size: 1.3em;  
+        font-weight: bold;  
+        text-transform: uppercase;  
+    }  
+      
+    input {  
+        width: 60px;  
+    }  
+      
+    p {  
+        text-align: center;  
+    }  
+    .titulo{
+        background: #000000;
+        padding-top:10px;
+        padding-bottom: 10px;
+        padding-left: 10px;
+    }
+    #titulo {
+        font-size: 14pt;
+        font-family: Arial;
+        font-weight: bold;
+        color:white;
+    }
+    #telefone,
+    #codigo,
+    #senha,
+    #usuario {  
+        border-bottom: 1px solid #aaa;  
+        border-right: 1px solid #aaa;  
+        border-left: 1px solid #aaa;  
+        border-top: 0px solid #aaa;  
+        font-weight: bold;  
+        background: #e7e7e7;  
+        width: 150;
+        text-align: center;
+    }  
+      
+    #ass {  
+        border-bottom: 1px solid #aaa;  
+        border-right: 1px solid #aaa;  
+        border-left: 1px solid #aaa;  
+        border-top: 0px solid #aaa;  
+        font-weight: bold;  
+        background: #e7e7e7;  
+        width: 300;
+    }  
+
+    #msg{  
+        border-bottom: 1px solid #aaa;  
+        border-right: 1px solid #aaa;  
+        border-left: 1px solid #aaa;  
+        border-top: 0px solid #aaa;  
+        font-weight: bold;  
+        height: 100;
+        width: 150;
+        background: #e7e7e7;    
+    }  
+    #enviar{
+       border: 1px solid gray;
+       background: blue;
+       color: white;
+       padding-top: 3px;
+       padding-bottom: 3px; 
+       width: 150;
+    }
