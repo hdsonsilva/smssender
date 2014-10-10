@@ -25,6 +25,7 @@ $(document).ready(function(){
                 setCookie('usuario',$('#usuario').val());
                 setCookie('senha',$('#senha').val());
                 setCookie('assinat',$('#assinat').val());
+                alert('Dados configurados com sucesso.');
 
                 Lungo.Router.article("principalsection", "main-article");
                 Lungo.Router.article("principalsection", "idsmsenviado");
